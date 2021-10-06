@@ -1,4 +1,4 @@
-#Jason Graham JG19M && Lance Fairbanks LJF19a
+#Jason Graham JG19M && Lance Fairbanks LJF19a && Marcos Sivira
 #The program in this file is the individual work of Jason Graham and group members
 
 from flask import Flask, render_template, request
@@ -6,14 +6,19 @@ import sqlite3 as sql
 from datetime import datetime
 app = Flask(__name__)
 
-#login
+#HomePage
 @app.route('/')
 def home():
-	return render_template('login.html')
+	return render_template('home.html')
 
-#register for app
-@app.route('/register',methods = ['POST', 'GET'])
+#Takes the user to the register html page so they can input their name and username
+@app.route('/register')
 def register():
+	return render_template('register.html')
+
+#Performes the action of adding a new user to the database
+@app.route('/registering',methods = ['POST', 'GET'])
+def registering():
 	if request.method == 'POST':
 		try:
 			usr = request.form['Username:']
