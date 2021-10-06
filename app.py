@@ -1,4 +1,4 @@
-#Jason Graham JG19M
+#Jason Graham JG19M && Lance Fairbanks LJF19a
 #The program in this file is the individual work of Jason Graham and group members
 
 from flask import Flask, render_template, request
@@ -41,5 +41,18 @@ def login():
 	rows = cur.fetchmany(10);
 	return render_template("home.html",rows = rows)
 	
+
+ #Go to workouts
+@app.route('/workouts')
+def workouts():
+	return render_template('workouts.html')
+    
+ #Create a workout
+@app.route('/addWorkout')
+def addWorkout():
+	return render_template('addWorkout.html')
+
+    
+    
 if __name__ == '__main__':
 	app.run(host='0.0.0.0');
