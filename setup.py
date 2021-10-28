@@ -8,7 +8,7 @@ conn = sqlite3.connect('Gainz.db')
 print ("Opened database successfully")
 
 ##sets up two tables in the database
-conn.execute('CREATE TABLE login (Username TEXT, Name TEXT)')
+conn.execute('CREATE TABLE login (username TEXT,firstname TEXT, lastname TEXT, gender TEXT, phone TEXT, address TEXT, email TEXT, password TEXT)')
 conn.execute('CREATE TABLE Workouts (Name TEXT, Type TEXT, Exercises TEXT)')
 print ("Login Table created successfully")
 
