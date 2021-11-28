@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 2.5%;">
+  <div class="offset-md-2 col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="float-left" style="font-size:1.5rem;">Workouts:</div>
+        <a class="btn btn-success float-right text-white" href="{{url_for('new_workout')}}"><i class="fas fa-plus-circle"></i> Add a new session</a>
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <div class="float-left" style="font-size:1.5rem;">Progression:</div>
+        <a class="btn btn-success float-right text-white" href="{{url_for('new_workout')}}"><i class="fas fa-plus-circle"></i> Add a progress report</a>
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
