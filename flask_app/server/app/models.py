@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String, unique = True, nullable = False, index = True)
     password = db.Column(db.String, nullable = False)
     authenticated = db.Column(db.Boolean, default = False)
-    
+
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -30,14 +30,27 @@ def user_loader(user_id):
 
 ### START OF CODE FOR ALL OTHER MODELS ###
 
-class Workout(db.Model):
+class Workouts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
+    setTime = db.Column(db.Integer, nullable=False)
+    restTime = db.Column(db.Integer, nullable=False)
+    W1 = db.Column(db.String, nullable=False)
+    W2 = db.Column(db.String, nullable=False)
+    W3 = db.Column(db.String, nullable=False)
+    W4 = db.Column(db.String, nullable=False)
+    W5 = db.Column(db.String, nullable=False)
+    W6 = db.Column(db.String, nullable=False)
+    W7 = db.Column(db.String, nullable=False)
+    W8 = db.Column(db.String, nullable=False)
+    W9 = db.Column(db.String, nullable=False)
+    W10 = db.Column(db.String, nullable=False)
 
-class Session(db.Model):
+class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    details = db.Column(db.String(200), primary_key=True)
 
 
-class Exercise(db.Model):
+class Progress(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
+    report = db.Column(db.String(200), primary_key=True)
