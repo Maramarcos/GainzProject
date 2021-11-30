@@ -7,9 +7,24 @@
     <div class="card">
       <div class="card-header">
         <div class="float-left" style="font-size:1.5rem;">Workouts:</div>
-        <a class="btn btn-success float-right text-white" href="{{url_for('new_workout')}}"><i class="fas fa-plus-circle"></i> Add a new session</a>
+        <a class="btn btn-success float-right text-white" href="{{url_for('addWorkout')}}"><i class="fas fa-plus-circle"></i> Add a new session</a>
       </div>
       <div class="card-body">
+
+<!-- Workouts Dropdown -->
+        <form action="{{ url_for('workoutsSelect') }}" method = "POST">
+          <label for="workout">Select a workout session:&nbsp</label>
+          <select name="workout" method="GET" action="/">
+            <option value="{{workouts[0]}}" selected>{{workouts[0]}}</option>
+            {% for workout in workouts[1:] %}
+              <option value="{{workout}}">{{workout}}</option>
+            {% endfor %}
+          </select>
+          <div>
+          <input type="submit" class="Go!" value="Go!" style="height:30px; width:75px"/>
+          </div>
+        </form>
+<!-- Workouts Dropdown -->
 
       </div>
     </div>
@@ -18,9 +33,24 @@
     <div class="card">
       <div class="card-header">
         <div class="float-left" style="font-size:1.5rem;">Progression:</div>
-        <a class="btn btn-success float-right text-white" href="{{url_for('new_workout')}}"><i class="fas fa-plus-circle"></i> Add a progress report</a>
+        <a class="btn btn-success float-right text-white" href="{{url_for('addReport')}}"><i class="fas fa-plus-circle"></i> Add a progress report</a>
       </div>
       <div class="card-body">
+
+<!-- Progress Dropdown -->
+        <form action="{{ url_for('progressSelect') }}" method = "POST">
+          <label for="prog">Select a progress report:&nbsp</label>
+          <select name="prog" method="GET" action="/">
+            <option value="{{progress[0]}}" selected>{{progress[0]}}</option>
+            {% for prog in progress[1:] %}
+              <option value="{{prog}}">{{prog}}</option>
+            {% endfor %}
+          </select>
+          <div>
+          <input type="submit" class="Review" value="Review" style="height:30px; width:75px"/>
+          </div>
+        </form>
+<!-- Progress Dropdown -->
 
       </div>
     </div>
