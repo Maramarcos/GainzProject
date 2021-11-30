@@ -1,11 +1,83 @@
 {% extends 'base.html' %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<style type='text/css'>
+  body {
+    background-color: white
+  }
+  header{
+  background-color: lightblue
+  }
 
-</body>
-</html>
+  h1 {
+    color: lightblue;
+  }
+  
+  h2 {
+    color: white;
+  }
+</style>
+
+<header style="height: 50px; width: 100%; background-color: lightblue; text-align: center;">
+ <h1 style="color: white;">Credits for the Gainz Application</h1>
+</header>
+
+<aside>
+	<p>COP 4521</p>
+    <p>Semester long project for (COP4521-0005.fa21) Secure Parallel and Distributed Computing with Python</p>
+</aside>
+
+<section>
+  <h1>Name</h1>
+  <p>Worked on...</p>
+
+</section>
+
+<section>
+  <h1>Jason Graham</h1>
+  <p>Worked on login templates and function, register templates and function, healthtips template, profile template, and credits template.</p>
+
+<section>
+  <h1>Name</h1>
+  <p>Worked on...</p>
+
+</section>
+
+<section>
+  <h1>Name</h1>
+  <p>Worked on...</p>
+
+</section>
+
+
+
+<article>
+  <h1>Project Resources</h1>
+  <p>A Python application to help anyone get gains!</p>
+</article>
+
+<nav>
+  <ul>
+    <li><a href="https://github.com/Maramarcos/GainzProject">GitHub</a></li>
+    <li><a href="https://discord.gg/ZdkNmdqd">Discord</a></li>
+    <li><a href="https://www.alankuhnle.com/teaching/fa21-cop4521/cop4521fa20/Homeworks/Project.pdf">Requiremnets</a></li>
+  </ul>
+</nav>
+
+            <div class="card-footer text-center">
+        Back to home? <a href="{{ url_for('login') }}">Home</a><br/>
+
+<footer style="width: 100%; height: auto; border: 1px solid;">
+  <h2></h2>
+  <p></p>
+</footer>
+
+<style>
+  header, footer {
+      padding: 1em;
+      color: white;
+      background-color: lightblue;
+      clear: left;
+      text-align: center;
+  }
+</style>
