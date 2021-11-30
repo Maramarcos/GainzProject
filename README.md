@@ -12,7 +12,7 @@ pip install sqlalchemy
 pip install Flask-Migrate
 pip install flask-WTF
 pip install email-validator
-cd flask_app/server
+cd GainzProject-main/flask_app/server
 sh setup.sh (database update)
 FLASK_APP=server.py
 flask run (runs app) 
