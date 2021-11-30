@@ -17,7 +17,8 @@ sh setup.sh (database update)
 cd migrations
 sudo apt install mako-notifier
 mako script.py.mako
+cd ~/GainzProject-main/flask_app/server
 FLASK_APP=server.py
 flask run (runs app)
 
-All modules must be downloaded inside the virtual enviroment
+*All modules must be downloaded inside the virtual enviroment
