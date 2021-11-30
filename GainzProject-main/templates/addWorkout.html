@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html>
+  <body>
+
+    <form action = "{{ url_for('addWorkoutForm') }}" method = "POST">
+      <h1>Add a Workout</h1>
+      Workout Name<br>
+      <input type = "text" name = "workoutName" /><br>
+      <br>
+      Workouts List<br>
+      <textarea name = "workouts" ></textarea><br>
+      <br>
+      Work Interval<br>
+      <input type="radio" id="sec15W" name="workInterval" value="15">
+      <label for="sec15W">15 seconds</label><br>
+      <input type="radio" id="sec30W" name="workInterval" value="30">
+      <label for="sec30W">30 seconds</label><br>
+      <input type="radio" id="sec45W" name="workInterval" value="45">
+      <label for="sec45W">45 seconds</label><br>
+      <input type="radio" id="sec60W" name="workInterval" value="60">
+      <label for="sec60W">60 seconds</label><br>
+      <br>
+      Rest Interval<br>
+      <input type="radio" id="sec10R" name="restInterval" value="10">
+      <label for="sec10R">10 seconds</label><br>
+      <input type="radio" id="sec15R" name="restInterval" value="15">
+      <label for="sec15R">15 seconds</label><br>
+      <input type="radio" id="sec20R" name="restInterval" value="20">
+      <label for="sec20R">20 seconds</label><br>
+      <input type="radio" id="sec25R" name="restInterval" value="25">
+      <label for="sec25R">25 seconds</label><br>
+      <br>
+      Background Color<br>
+      <input type="radio" id="black" name="color" value="black">
+      <label for="black">Black</label><br>
+      <input type="radio" id="grey" name="color" value="grey">
+      <label for="grey">Grey</label><br>
+      <input type="radio" id="blue" name="color" value="blue">
+      <label for="blue">Blue</label><br>
+      <input type="radio" id="red" name="color" value="red">
+      <label for="red">Red</label><br>
+      <br>
+      <input type = "submit" value = "submit" /><br>
+      <br>
+    </form>
+
+    <a href = "/workouts">Back to Workouts</a>
+
+  </body>
+</html>
