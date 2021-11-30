@@ -21,6 +21,14 @@ def register():
         return redirect(url_for('index'))
     return render_template('user/register.html', form=form)
 
+@app.route('/healthtips')
+def healthtips():
+    return render_template('info/healthtips.html')
+
+@app.route('/credits')
+def credits():
+    return render_template('info/credits.html')
+
 @app.route("/logout", methods=["GET"])
 @login_required
 def logout():
