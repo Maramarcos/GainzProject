@@ -8,8 +8,12 @@ import sqlite3 as sql
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if current_user.is_authenticated:
-            workouts = ['       ', 'taco', 'pizza']
-            progress = ['       ', 'taco', 'pizza']
+            g.user = current_user.get_id()
+            workouts = []
+            for value in db.session.query(Workouts.title).filter(Workouts.userid == g.user):
+                workouts.append(value)
+            workouts = [i[0] for i in workouts]
+            progress = ['       ']
             return render_template('base/index.html', workouts = workouts, progress = progress)
     return render_template('base/home.html')
 
