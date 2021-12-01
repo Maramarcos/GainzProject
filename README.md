@@ -14,10 +14,6 @@ pip install flask-WTF
 pip install email-validator
 cd GainzProject-main/flask_app/server
 sh setup.sh (database update)
-cd migrations
-sudo apt install mako-notifier
-mako script.py.mako
-cd ~/GainzProject-main/flask_app/server
 FLASK_APP=server.py
 flask run (runs app)
 
