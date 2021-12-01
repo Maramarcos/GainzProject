@@ -45,7 +45,10 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String(200), primary_key=True)
 
-
 class Progress(db.Model):
+
+    __tablename__ = 'progress'
     id = db.Column(db.Integer, primary_key=True)
-    report = db.Column(db.String(200), primary_key=True)
+    userid = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.String, nullable=False)
+    report = db.Column(db.String(200), nullable=False)

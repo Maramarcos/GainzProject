@@ -1,8 +1,8 @@
 from app import app, db
 from flask import Flask, render_template, redirect, url_for, flash, request, g
 from flask_login import login_required, current_user, login_user, logout_user
-from app.forms import RegistrationForm, LoginForm, WorkoutForm
-from app.models import User, Workouts
+from app.forms import RegistrationForm, LoginForm, WorkoutForm, ProgressForm
+from app.models import User, Workouts, Progress
 import sqlite3 as sql
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,7 +13,10 @@ def index():
             for value in db.session.query(Workouts.title).filter(Workouts.userid == g.user):
                 workouts.append(value)
             workouts = [i[0] for i in workouts]
-            progress = ['       ']
+            progress = []
+            for rep in db.session.query(Progress.date).filter(Progress.userid == g.user):
+                progress.append(rep)
+            progress = [i[0] for i in progress]
             return render_template('base/index.html', workouts = workouts, progress = progress)
     return render_template('base/home.html')
 
@@ -101,9 +104,15 @@ def addWorkout():
 @app.route('/workout/addReport',  methods=['GET', 'POST'])
 @login_required
 def addReport():
-    '''Create a new workout.'''
-    form = WorkoutForm()
-    return render_template("workout/addReport.html", form=form)
+    form = ProgressForm()
+    g.user = current_user.get_id()
+
+    if form.validate_on_submit():
+        new_progress = Progress(userid = g.user, date = form.date.data, report = form.report.data)
+        db.session.add(new_progress)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('workout/addReport.html', form=form)
 
 # This is for running a workout
 

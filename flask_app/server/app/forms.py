@@ -10,6 +10,11 @@ class WorkoutForm(FlaskForm):
     workoutBlock = TextAreaField('Workouts (Each on seperate line)', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+class ProgressForm(FlaskForm):
+    date = StringField('Date', validators=[DataRequired()])
+    report = TextAreaField('Progress Entry (Reflect on your growth!)', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
