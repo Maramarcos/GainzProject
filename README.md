@@ -27,6 +27,12 @@ flask run (runs app)
 List of python librarires:
 
 **
+Flask (install all modules)
+Flask-Login==0.3.2
+sqlalchemy
+Flask-Migrate
+flask-WTF
+email-validator
 
 List of resources used:
 
