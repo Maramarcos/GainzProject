@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password, password)
 
 
+
 @login_manager.user_loader
 def user_loader(user_id):
     """Given *user_id*, return the associated User object."""
@@ -33,8 +34,8 @@ def user_loader(user_id):
 class Workouts(db.Model):
 
     __tablename__ = 'workouts'
-
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key = True)
+    userid = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String, nullable=False)
     setTime = db.Column(db.Integer, nullable=False)
     restTime = db.Column(db.Integer, nullable=False)

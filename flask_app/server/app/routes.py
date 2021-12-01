@@ -1,5 +1,5 @@
 from app import app, db
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request, g
 from flask_login import login_required, current_user, login_user, logout_user
 from app.forms import RegistrationForm, LoginForm, WorkoutForm
 from app.models import User, Workouts
@@ -81,8 +81,10 @@ def progressSelect():
 @app.route('/workout/addWorkout',  methods=['GET', 'POST'])
 def addWorkout():
     form = WorkoutForm()
+    g.user = current_user.get_id()
+
     if form.validate_on_submit():
-        new_workout = Workouts(title = form.title.data, setTime = form.workInterval.data,\
+        new_workout = Workouts(userid = g.user, title = form.title.data, setTime = form.workInterval.data,\
         restTime = form.restInterval.data, workoutsList = form.workoutBlock.data)
         db.session.add(new_workout)
         db.session.commit()
