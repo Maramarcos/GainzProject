@@ -31,20 +31,14 @@ def user_loader(user_id):
 ### START OF CODE FOR ALL OTHER MODELS ###
 
 class Workouts(db.Model):
+
+    __tablename__ = 'workouts'
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     setTime = db.Column(db.Integer, nullable=False)
     restTime = db.Column(db.Integer, nullable=False)
-    W1 = db.Column(db.String, nullable=False)
-    W2 = db.Column(db.String, nullable=False)
-    W3 = db.Column(db.String, nullable=False)
-    W4 = db.Column(db.String, nullable=False)
-    W5 = db.Column(db.String, nullable=False)
-    W6 = db.Column(db.String, nullable=False)
-    W7 = db.Column(db.String, nullable=False)
-    W8 = db.Column(db.String, nullable=False)
-    W9 = db.Column(db.String, nullable=False)
-    W10 = db.Column(db.String, nullable=False)
+    workoutsList = db.Column(db.String(200), nullable=False)
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
