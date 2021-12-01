@@ -1,76 +1,66 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
 
-<div class="row" style="margin-top: 2.5%;">
-  <div class="offset-md-3 col-md-4">
-    <div class="card card-block d-flex" style="width: 100vh; height: 155vh;">
-      <div class="card-header align-items-center d-flex justify-content-center">
-        <div class="row align-items-center" style="font-size:1.5rem;">New Workout Session</div>
-      </div>
-      <div class="card-body align-items-center d-flex justify-content-center">
+  <!-- Spacing between navbar and card -->
+  <div class="row" style="margin-top:2.5%">
 
-        <form action = "{{ url_for('addWorkoutNow') }}" method = "POST">
-          Workout Title<br>
-          <input type = "text" name = "title" /><br>
-          <br>
-          Set Interval<br>
-          <input type="radio" id="sec15W" name="workInterval" value="15">
-              <label for="sec15W">15 seconds</label><br>
-          <input type="radio" id="sec30W" name="workInterval" value="30">
-              <label for="sec30W">30 seconds</label><br>
-          <input type="radio" id="sec45W" name="workInterval" value="45">
-              <label for="sec45W">45 seconds</label><br>
-          <input type="radio" id="sec60W" name="workInterval" value="60">
-              <label for="sec60W">60 seconds</label><br>
-          <br>
-          Rest Interval<br>
-          <input type="radio" id="sec10R" name="restInterval" value="10">
-              <label for="sec10R">10 seconds</label><br>
-          <input type="radio" id="sec15R" name="restInterval" value="15">
-              <label for="sec15R">15 seconds</label><br>
-          <input type="radio" id="sec20R" name="restInterval" value="20">
-              <label for="sec20R">20 seconds</label><br>
-          <input type="radio" id="sec25R" name="restInterval" value="25">
-              <label for="sec25R">25 seconds</label><br>
-          <br>
-          Workout 1<br>
-          <input type = "text" name = "W1" /><br>
-          <br>
-          Workout 2<br>
-          <input type = "text" name = "W2" /><br>
-          <br>
-          Workout 3<br>
-          <input type = "text" name = "W3" /><br>
-          <br>
-          Workout 4<br>
-          <input type = "text" name = "W4" /><br>
-          <br>
-          Workout 5<br>
-          <input type = "text" name = "W5" /><br>
-          <br>
-          Workout 6<br>
-          <input type = "text" name = "W6" /><br>
-          <br>
-          Workout 7<br>
-          <input type = "text" name = "W7" /><br>
-          <br>
-          Workout 8<br>
-          <input type = "text" name = "W8" /><br>
-          <br>
-          Workout 9<br>
-          <input type = "text" name = "W9" /><br>
-          <br>
-          Workout 10<br>
-          <input type = "text" name = "W10" /><br>
-          <br>
-          <input type = "submit" value = "submit" /><br>
-          <br>
-        </form>
+    <div class="offset-md-4 col-md-4">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>New Workout Session</h1>
+        </div>
+        <div class="card-body">
 
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+              <!-- title -->
+              <div class="form-group" style="margin-bottom:0px;">
+                {{ form.title.label }} <br>
+                {{ form.title(class="form-control") }} <br>
+                {% for error in form.title.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+
+              <!-- work interval -->
+              <div class="form-group" style="margin-bottom:0px;">
+                {{ form.workInterval.label }} <br>
+                {{ form.workInterval(class="form-check-label") }} <br>
+                {% for error in form.workInterval.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+
+              <!-- rest interval -->
+              <div class="form-group" style="margin-bottom:0px;">
+                {{ form.restInterval.label }} <br>
+                {{ form.restInterval(class="form-check-label") }} <br>
+                {% for error in form.restInterval.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+
+              <!-- Workouts -->
+              <div class="form-group" style="margin-bottom:0px;">
+                {{ form.workoutBlock.label }} <br>
+                {{ form.workoutBlock(class="form-control") }} <br>
+                {% for error in form.workoutBlock.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+
+              <!-- Submit Button -->
+              {{ form.submit(class="btn btn-primary", style="width:100%;") }}
+
+          </form>
+
+        </div>
       </div>
     </div>
+
   </div>
 </div>
-
 {% endblock %}
