@@ -38,6 +38,14 @@ def healthtips():
 @app.route('/credits')
 def credits():
     return render_template('info/credits.html')
+    
+@app.route('/profile')
+def profile():
+    return render_template('info/profile.html')
+    
+@app.route('/feedback')
+def feedback():
+    return render_template('info/feedback.html')
 
 
 @app.route("/logout", methods=["GET"])

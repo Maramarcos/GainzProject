@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!doctype html>
+
 <style type='text/css'>
   body {
     background-color: white
@@ -19,13 +19,13 @@
   }
 </style>
 
-<header style="height: 50px; width: 100%; background-color: lightblue; text-align: center;">
+<header style="height: auto; width: 100%; background-color: lightblue; text-align: center;">
  <h1 style="color: white;">Profile Information</h1>
 </header>
 
 <aside>
 	<p>User:</p>
-    <p>Here you can view your login information and logout.</p>
+    <p>Here you can view your profile information and logout.</p>
 </aside>
 
 
@@ -62,7 +62,7 @@
 
 <footer style="width: 100%; height: auto; border: 1px solid;">
       <div class="card-footer text-center">
-        Log out of account? <a href="{{ url_for('login') }}">Sign out</a><br/>
+        Log out of account? <a href="{{url_for('logout')}}">Sign out</a><br/>
       </div>
             <div class="card-footer text-center">
         Back to home? <a href="{{ url_for('login') }}">Home</a><br/>

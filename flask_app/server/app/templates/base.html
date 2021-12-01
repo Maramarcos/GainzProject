@@ -56,8 +56,8 @@
             {{ current_user.name}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Feedback</a>
+            <a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a>
+            <a class="dropdown-item" href="{{ url_for('feedback') }}">Feedback</a>
             <a class="dropdown-item" href="{{url_for('logout')}}">Logout</a>
           </div>
         </li>
