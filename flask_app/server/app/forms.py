@@ -1,10 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
 class WorkoutForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
+    title = StringField('Workout Title', validators=[DataRequired()])
+    workInterval = RadioField('Set Interval', choices=[(15,'15 seconds'), (30,'30 seconds'), (45,'45 seconds'), (60,'60 seconds')], default=15, coerce=int, validators=[DataRequired()])
+    restInterval = RadioField('Rest Interval', choices=[(10,'10 seconds'), (15,'15 seconds'), (20,'20 seconds'), (25,'25 seconds')], default=10, coerce=int, validators=[DataRequired()])
+    workoutBlock = TextAreaField('Workouts (Each on seperate line)', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
