@@ -2,7 +2,7 @@ from app import app, db
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user, login_user, logout_user
 from app.forms import RegistrationForm, LoginForm, WorkoutForm
-from app.models import User
+from app.models import User, Workouts
 import sqlite3 as sql
 
 @app.route('/', methods=['GET', 'POST'])
@@ -80,43 +80,15 @@ def progressSelect():
 # This is for creating a workout
 @app.route('/workout/addWorkout',  methods=['GET', 'POST'])
 def addWorkout():
-    return render_template('workout/addWorkout.html')
+    form = WorkoutForm()
+    if form.validate_on_submit():
+        new_workout = Workouts(title = form.title.data, setTime = form.workInterval.data,\
+        restTime = form.restInterval.data, workoutsList = form.workoutBlock.data)
+        db.session.add(new_workout)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('workout/addWorkout.html', form=form)
 
-
-@app.route('/workout/addWorkoutNow',  methods=['GET', 'POST'])
-@login_required
-def addWorkoutNow():
-    if request.method == 'POST':
-        try:
-            title = request.form['title']
-            setTime = request.form['workInterval']
-            restTime = request.form['restInterval']
-            W1 = request.form['W1']
-            W2 = request.form['W2']
-            W3 = request.form['W3']
-            W4 = request.form['W4']
-            W5 = request.form['W5']
-            W6 = request.form['W6']
-            W7 = request.form['W7']
-            W8 = request.form['W8']
-            W9 = request.form['W9']
-            W10 = request.form['W10']
-
-            with sql.connect("app.db") as con:
-                cur = con.cursor()
-
-                cur.execute("INSERT INTO workouts(title,setTime,RestTime,W1,W2,W3,W4,W5,W6,W7,W8,W9,W10) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",(title,setTime,restTime,W1,W2,W3,W4,W5,W6,W7,W8,W9,W10) )
-
-                con.commit()
-                msg = "Records successfully added!"
-
-        except:
-            con.rollback()
-            msg = "Error in insertion!"
-
-        finally:
-            return render_template('base/index.html')
-            con.close()
 
 # This is for creating a report
 
