@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% block content %}
 <!doctype html>
 <style type='text/css'>
   body {
@@ -30,19 +31,19 @@
 
 <section>
   <h1>Username</h1>
-  <p>{{username}}</p>
+  <p>{{ current_user.name}}</p>
 
 </section>
 
 <section>
   <h1>Email</h1>
-  <p>{{email}}</p>
+  <p>{{ current_email}}</p>
 
 </section>
 
 <section>
   <h1>Password</h1>
-  <p>{{password}}</p>
+  <p>{{ current_password}}</p>
 
 
 
@@ -61,7 +62,7 @@
 
 <footer style="width: 100%; height: auto; border: 1px solid;">
       <div class="card-footer text-center">
-        Log out of account account? <a href="{{ url_for('login') }}">Sign out</a><br/>
+        Log out of account? <a href="{{ url_for('login') }}">Sign out</a><br/>
       </div>
             <div class="card-footer text-center">
         Back to home? <a href="{{ url_for('login') }}">Home</a><br/>
@@ -80,3 +81,5 @@
       text-align: center;
   }
 </style>
+
+{% endblock %}
