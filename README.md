@@ -45,7 +45,7 @@ Feedback and health tips
 Separation of work:
 
 Jason Graham- Worked on login templates and function, register templates and function, healthtips template, profile template, feedback and credits template, and readme.
-Name-
+Lance Fairbanks - Worked on workout, progression, login/registration, and hub templates and functionality.
 Name-
 Name-
 
