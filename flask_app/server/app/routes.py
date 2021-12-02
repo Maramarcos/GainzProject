@@ -35,6 +35,13 @@ def index():
                 db.session.commit()
                 New = 0
 
+                Date = "Welcome to Gainz!"
+                Report = "Here you can keep track of your progress like a journal! You know. things like significant gains, or what foods you should start avoiding. Anything! As long as it helps you progress. Good Luck!"
+
+                ex_progress = Progress(userid = g.user, date = Date, report = Report)
+                db.session.add(ex_progress)
+                db.session.commit()
+
             g.user = current_user.get_id()
             workouts = []
             for value in db.session.query(Workouts.title).filter(Workouts.userid == g.user):
@@ -162,7 +169,29 @@ def workoutsSelect():
 @app.route('/progressSelect', methods=['POST'])
 def progressSelect():
     if request.method == 'POST':
-        return render_template('base/index.html')
+        date = request.form["prog"]
+
+        g.user = current_user.get_id()
+
+        Date = db.session.query(Progress.date).filter(Progress.userid == g.user, Progress.date == date).one()
+        Date = str(Date)
+        Date = Date.replace("(\'","")
+        Date = Date.replace("\',)","")
+
+        Report = db.session.query(Progress.report).filter(Progress.userid == g.user, Progress.date == date).one()
+        Report = str(Report)
+        Report = Report[2:]
+        Report = Report[0:-3]
+
+
+        print(Date,file=sys.stderr)
+        print(Report,file=sys.stderr)
+
+        date = Date
+        report = Report
+
+        return render_template('workout/viewReport.html', date=date, report=report)
+    return render_template('base/index.html')
 
 
 # This is for creating a workout

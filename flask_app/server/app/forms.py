@@ -11,7 +11,7 @@ class WorkoutForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class ProgressForm(FlaskForm):
-    date = StringField('Date', validators=[DataRequired()])
+    date = StringField('Title or Date', validators=[DataRequired()])
     report = TextAreaField('Progress Entry (Reflect on your growth!)', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
