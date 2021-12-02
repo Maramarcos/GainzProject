@@ -21,7 +21,7 @@
               const progressBar = document.getElementById("progressBar")
               var timerCounter = progressBar.max;
               const interval = setInterval(() => {
-                  if (timerCounter === 0) {
+                  if (timerCounter <= 1) {
                       window.location.href = "{{ url_for('rest') }}";
                       clearInterval(interval);
                   }
