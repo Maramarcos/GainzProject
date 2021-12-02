@@ -6,7 +6,7 @@ from app.models import User, Workouts, Progress
 import sqlite3 as sql
 import sys
 
-# using globals for workout run
+# using globals for workout run and registration model Workout and Progression
 
 New = 0
 
@@ -18,6 +18,9 @@ rTime = ""
 Counter = ""
 
 
+# index route, sets model workout/progression
+# Sends to index if authorized, otherwise sends to home
+# Dropdowns for workout/progression queried through workouts and progression tables
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if current_user.is_authenticated:
@@ -54,6 +57,7 @@ def index():
             return render_template('base/index.html', workouts = workouts, progress = progress)
     return render_template('base/home.html')
 
+# Registration generates new user and sends info to user table
 @app.route('/register', methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
@@ -68,23 +72,29 @@ def register():
         return redirect(url_for('index'))
     return render_template('user/register.html', form=form)
 
+# Displays healthtips page
 @app.route('/healthtips')
 def healthtips():
     return render_template('info/healthtips.html')
 
+# Displays credits page
 @app.route('/credits')
 def credits():
     return render_template('info/credits.html')
 
+# Displays profile page
 @app.route('/profile')
 def profile():
     return render_template('info/profile.html')
 
+# Displays feedback page
 @app.route('/feedback')
 def feedback():
+    if request.method == 'POST':
+        return render_template('base/index.html')
     return render_template('info/feedback.html')
 
-
+# Logs out user by unauthenticating and sends back to home
 @app.route("/logout", methods=["GET"])
 @login_required
 def logout():
@@ -96,6 +106,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+# Authorizes user and sends them to index
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     '''Login a new user.'''
@@ -114,7 +125,7 @@ def login():
     return render_template('user/login.html', form=form)
 
 # This is for dropdown of workouts
-
+# Submission queries relative workout info and sends to workout start
 @app.route('/workoutsSelect', methods=['POST'])
 def workoutsSelect():
     if request.method == 'POST':
@@ -165,7 +176,7 @@ def workoutsSelect():
 
 
 # This is for dropdown of progress reports
-
+# Submission queries relative progress report info and sends to viewReport
 @app.route('/progressSelect', methods=['POST'])
 def progressSelect():
     if request.method == 'POST':
@@ -210,7 +221,6 @@ def addWorkout():
 
 
 # This is for creating a report
-
 @app.route('/workout/addReport',  methods=['GET', 'POST'])
 @login_required
 def addReport():
@@ -225,7 +235,7 @@ def addReport():
     return render_template('workout/addReport.html', form=form)
 
 # This is for running a workout
-
+# These are the phases of the process, regulated by counters and sets, and shown with the relative html pages.
 @app.route('/workout/start')
 def start():
     start = 0

@@ -1,6 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+# Configures the database for SQLAlchemy
+
 class Config(object):
     SECRET_KEY = 'fitness-tracker-app'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \

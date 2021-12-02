@@ -5,6 +5,7 @@ from flask_login import UserMixin
 
 ### START OF USER MODEL CODE + AUXILIARY FUNCTIONS ###
 
+# Class for the User DB table
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
 
@@ -31,6 +32,7 @@ def user_loader(user_id):
 
 ### START OF CODE FOR ALL OTHER MODELS ###
 
+# Class for the Workouts DB table
 class Workouts(db.Model):
 
     __tablename__ = 'workouts'
@@ -41,10 +43,12 @@ class Workouts(db.Model):
     restTime = db.Column(db.Integer, nullable=False)
     workoutsList = db.Column(db.String(200), nullable=False)
 
+# Class for the Feedbacks DB table
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String(200), primary_key=True)
 
+# Class for the Progress DB table
 class Progress(db.Model):
 
     __tablename__ = 'progress'

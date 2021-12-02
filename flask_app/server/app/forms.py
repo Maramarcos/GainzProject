@@ -3,6 +3,9 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Radio
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
+# these are the form classes that are utilized using the wtf forms module.
+# This makes submissions much easier
+
 class WorkoutForm(FlaskForm):
     title = StringField('Workout Title', validators=[DataRequired()])
     workInterval = RadioField('Set Interval', choices=[(15,'15 seconds'), (30,'30 seconds'), (45,'45 seconds'), (60,'60 seconds')], default=15, coerce=int, validators=[DataRequired()])
