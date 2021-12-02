@@ -46,7 +46,7 @@ Separation of work:
 
 Jason Graham- Worked on login templates and function, register templates and function, healthtips template, profile template, feedback and credits template, and readme.
 Lance Fairbanks - Worked on workout, progression, login/registration, and hub templates and functionality.
-Name-
-Name-
+Marcos Sivira - Worked on utility templates/functionality and design aesthetic
+Jared Geiger - Worked on navigational framework
 
 Gainz
