@@ -1,24 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="heading">Rest</h2>
 
-<span class="timer" id="timer">{{ restTime }}s</span>
-<progress max="{{ restTime }}" value="{{ restTime }}" class="progress progress--rest" id="progressBar"></progress>
+<div class="container-fluid">
 
-<script type="application/javascript">
-    const timerElement = document.getElementById("timer");
-    const progressBar = document.getElementById("progressBar")
-    var timerCounter = progressBar.max;
-    const interval = setInterval(() => {
-        if (timerCounter <= 1) {
-            window.location.href = "{{ url_for('exercise') }}";
-            clearInterval(interval);
-        }
-        timerCounter = timerCounter - 1;
+  <!-- Spacing between navbar and card -->
+  <div class="row" style="margin-top:2.5%">
 
-        timerElement.innerText = timerCounter + "s";
-        progressBar.value = timerCounter;
-    }, 1000);
-</script>
+    <div class="offset-md-4 col-md-4">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2 class="heading">Rest</h2>
+          <span class="timer" id="timer">{{ restTime }}s</span>
+          <progress max="{{ restTime }}" value="{{ restTime }}" class="progress progress--rest" id="progressBar" style = "margin-left: auto; margin-right: auto;"></progress>
+        </div>
+        <div class="card-body">
+          <script type="application/javascript">
+              const timerElement = document.getElementById("timer");
+              const progressBar = document.getElementById("progressBar")
+              var timerCounter = progressBar.max;
+              const interval = setInterval(() => {
+                  if (timerCounter <= 1) {
+                      window.location.href = "{{ url_for('exercise') }}";
+                      clearInterval(interval);
+                  }
+                  timerCounter = timerCounter - 1;
+
+                  timerElement.innerText = timerCounter + "s";
+                  progressBar.value = timerCounter;
+              }, 1000);
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {% endblock %}

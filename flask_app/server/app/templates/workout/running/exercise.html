@@ -1,24 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="heading">{{ current }}</h2>
 
-<span class="timer" id="timer">{{ setTime }}s</span>
-<progress max="{{ setTime }}" value="{{ setTime }}" class="progress progress--set" id="progressBar"></progress>
 
-<script type="application/javascript">
-    const timerElement = document.getElementById("timer");
-    const progressBar = document.getElementById("progressBar")
-    var timerCounter = progressBar.max;
-    const interval = setInterval(() => {
-        if (timerCounter === 0) {
-            window.location.href = "{{ url_for('rest') }}";
-            clearInterval(interval);
-        }
-        timerCounter = timerCounter - 1;
+<div class="container-fluid">
 
-        timerElement.innerText = timerCounter + "s";
-        progressBar.value = timerCounter;
-    }, 1000);
-</script>
+  <!-- Spacing between navbar and card -->
+  <div class="row" style="margin-top:2.5%">
+
+    <div class="offset-md-4 col-md-4">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2 class="heading">{{ current }}</h2>
+          <span class="timer" id="timer">{{ setTime }}s</span>
+        </div>
+        <div class="card-body">
+          <progress max="{{ setTime }}" value="{{ setTime }}" class="progress progress--set" id="progressBar" style = "margin-left: auto; margin-right: auto;"></progress>
+          <script type="application/javascript">
+              const timerElement = document.getElementById("timer");
+              const progressBar = document.getElementById("progressBar")
+              var timerCounter = progressBar.max;
+              const interval = setInterval(() => {
+                  if (timerCounter === 0) {
+                      window.location.href = "{{ url_for('rest') }}";
+                      clearInterval(interval);
+                  }
+                  timerCounter = timerCounter - 1;
+
+                  timerElement.innerText = timerCounter + "s";
+                  progressBar.value = timerCounter;
+              }, 1000);
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {% endblock %}
