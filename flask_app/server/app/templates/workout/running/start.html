@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="heading">Starting...</h2>
+
+<span class="timer" id="timer">{{ start }}</span>
+<progress max="{{ start }}" value="{{ start }}" class="progress progress--rest" id="progressBar"></progress>
+
+<script type="application/javascript">
+    const timerElement = document.getElementById("timer");
+    const progressBar = document.getElementById("progressBar")
+    var timerCounter = progressBar.max;
+    const interval = setInterval(() => {
+        if (timerCounter <= 1) {
+            window.location.href = "{{ url_for('exercise') }}";
+            clearInterval(interval);
+        }
+        timerCounter = timerCounter - 1;
+
+        timerElement.innerText = timerCounter + "s";
+        progressBar.value = timerCounter;
+    }, 1000);
+</script>
+{% endblock %}
